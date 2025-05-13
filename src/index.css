@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 10%;
+    --card-background: 0 0% 17%;
+    --accent: 270 75% 60%;
+    --accent-hover: 270 75% 55%;
+    --text-primary: 0 0% 95%;
+    --text-secondary: 0 0% 75%;
+    --border: 0 0% 20%;
+    --success: 142 76% 36%;
+    --warning: 43 96% 56%;
+    --error: 0 91% 71%;
+    
+    --transition-duration: 300ms;
+  }
+
+  .theme-darker {
+    --background: 0 0% 5%;
+    --card-background: 0 0% 12%;
+  }
+
+  body {
+    @apply bg-background text-primary;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-medium leading-tight;
+  }
+  
+  h1 {
+    @apply text-2xl lg:text-3xl;
+  }
+  
+  h2 {
+    @apply text-xl lg:text-2xl;
+  }
+  
+  h3 {
+    @apply text-lg lg:text-xl;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-card/80 backdrop-blur-md border border-border;
+  }
+  
+  .card {
+    @apply bg-card rounded-xl border border-border p-4 shadow-md;
+  }
+  
+  .button-primary {
+    @apply bg-accent hover:bg-accent-hover text-white px-4 py-2 rounded-lg transition-all duration-300;
+  }
+  
+  .button-secondary {
+    @apply bg-card hover:bg-card/80 text-primary px-4 py-2 rounded-lg border border-border transition-all duration-300;
+  }
+  
+  .icon-button {
+    @apply p-2 rounded-full hover:bg-card/80 transition-all duration-300;
+  }
+  
+  .nav-item {
+    @apply flex items-center gap-3 p-3 rounded-lg transition-all duration-300 hover:bg-card;
+  }
+  
+  .nav-item.active {
+    @apply bg-accent/10 text-accent;
+  }
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-border rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-accent/50;
+}
